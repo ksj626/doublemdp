@@ -1,0 +1,92 @@
+{
+  "method": "bdpo",
+  "profile": "ogbench_port",
+  "comparison": "new_port_not_original_reproduction",
+  "strict_offline": true,
+  "env": "scene-play-singletask-task2-v0",
+  "seed": 0,
+  "steps": 1000,
+  "batch_size": 256,
+  "sparse": true,
+  "agent": {
+    "profile": "ogbench_port",
+    "name": "bdpo",
+    "pretrain_steps": 500,
+    "train_steps": 500,
+    "batch_size": 256,
+    "eval_num_samples": 10,
+    "warmup_steps": 50,
+    "temperature": 0.0,
+    "diffusion": {
+      "actor": {
+        "lr": 1e-05,
+        "lr_decay_steps": 2000000,
+        "clip_grad_norm": 1.0,
+        "ema": 0.005,
+        "ema_every": 5
+      },
+      "behavior": {
+        "lr": 0.0003,
+        "lr_decay_steps": null,
+        "clip_grad_norm": 1.0,
+        "ema": 0.005,
+        "ema_every": 1
+      },
+      "noise_schedule": "vp",
+      "resnet": false,
+      "dropout": 0.0,
+      "layer_norm": false,
+      "time_dim": 64,
+      "mlp_hidden_dims": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "resnet_hidden_dims": [
+        256,
+        256,
+        256
+      ],
+      "solver": "ddpm",
+      "steps": 5,
+      "clip_sampler": true,
+      "x_min": -1.0,
+      "x_max": 1.0
+    },
+    "critic": {
+      "discount": 0.99,
+      "q_target": "lcb",
+      "maxQ": false,
+      "ensemble_size": 10,
+      "rho": 0.5,
+      "eta": 0.05,
+      "hidden_dims": [
+        256,
+        256,
+        256
+      ],
+      "lr": 0.0003,
+      "lr_decay_steps": 2000000,
+      "clip_grad_norm": 1.0,
+      "layer_norm": false,
+      "ema": 0.005,
+      "ema_every": 1,
+      "steps": 5,
+      "num_samples": 10,
+      "solver": "ddpm",
+      "update_ratio": 5
+    }
+  },
+  "dataset_dir": "/home/dmsdmswns/doublemdp_outputs/datasets/ogbench",
+  "output": "/home/dmsdmswns/doublemdp_outputs/runs/bdpo_ogbench_scene_integration_seed0",
+  "eval_episodes": 50,
+  "eval_interval": 1000,
+  "save_interval": 500,
+  "log_interval": 100,
+  "reward_scale": 1.0,
+  "action_chunk_length": 1,
+  "checkpoint_selection": "final",
+  "tuning_status": "untuned fixed transfer",
+  "budget_label": "integration_only"
+}

@@ -1,0 +1,54 @@
+{
+  "profile": "ogbench_port_integration",
+  "status": "complete",
+  "config": "configs/dppo_ogbench_integration.json",
+  "run": {
+    "method": "dppo_online",
+    "profile": "ogbench_port",
+    "dataset_path": "/home/dmsdmswns/doublemdp_outputs/datasets/ogbench/dppo_antmaze_task1_matched.npz",
+    "dataset_sha256": "94632775fc0fa7b886c629b9bb9277613cd450e102191ab517ecdb80e60cd74c",
+    "env": "antmaze-large-navigate-singletask-task1-v0",
+    "reward": "sparse",
+    "seed": 0,
+    "checkpoint_selection": "final training update",
+    "online_interactions": true,
+    "upstream_commit": "dc8e0c9edce7ac2b2ff112abe460e1c21b0b3bdc",
+    "bc_updates": 7813,
+    "bc_epochs": 1,
+    "online_iterations": 2,
+    "ppo_updates": 2,
+    "online_env_steps": 64,
+    "evaluation_env_steps": 100000,
+    "bc_seconds": 33.499228446773486,
+    "status": "complete",
+    "claim": "Completed configured diagnostic budget, not an original-paper reproduction"
+  },
+  "dataset": {
+    "kind": "ogbench",
+    "task": "antmaze-large-navigate-singletask-task1-v0",
+    "version": "1.2.0",
+    "reward_timing": "r(s), not r(s_next)",
+    "sparse_conversion": false,
+    "action_clip_eps": 1e-05,
+    "sources": [
+      {
+        "path": "/home/dmsdmswns/doublemdp_outputs/datasets/ogbench/antmaze-large-navigate-v0.npz",
+        "size_bytes": 242877817,
+        "sha256": "2dbe946ac107ca5ac524f82f7a72efa951ceab0be915201d6b32e612d823f2e7"
+      }
+    ],
+    "count": 1000000,
+    "file_sha256": "71a7d6f1709024d814817c277cfb446bf9bfb2299a4939bd60d48e935e8d5ee2",
+    "arrays_sha256": "94632775fc0fa7b886c629b9bb9277613cd450e102191ab517ecdb80e60cd74c"
+  },
+  "evaluation": {
+    "bc_episodes": 50,
+    "final_episodes": 50,
+    "bc_success": 0,
+    "final_success": 0,
+    "bc_return_mean": -1000.0,
+    "final_return_mean": -1000.0,
+    "parallel_envs": 50
+  },
+  "claim": "Dataset-matched integration check only; no full-budget result or reproduction claim"
+}

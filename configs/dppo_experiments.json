@@ -1,0 +1,75 @@
+{
+  "paper": "https://arxiv.org/html/2409.00588v3",
+  "commit": "dc8e0c9edce7ac2b2ff112abe460e1c21b0b3bdc",
+  "profile": "official_code_v0.6",
+  "task": "hopper-medium-v2",
+  "data_source": "author-preprocessed D4RL v2",
+  "transitions": 999906,
+  "episodes": 2186,
+  "sha256": "497b1e5efdf3c9c41422126171830a7acfaac06b4b1088d0516979c34b363bab",
+  "normalization": "min/max [-1,1], author normalization.npz",
+  "architecture_config": "third_party/dppo/cfg/gym/finetune/hopper-v2/ft_ppo_diffusion_mlp.yaml",
+  "bc_config": "third_party/dppo/cfg/gym/pretrain/hopper-medium-v2/pre_diffusion_mlp.yaml",
+  "seeds": [
+    42
+  ],
+  "paper_reference_score": null,
+  "paper_reference_score_note": "Paper plots not digitized; no fabricated scalar reference",
+  "checkpoint_selection": "last requested update",
+  "runs": [
+    {
+      "phase": "bc",
+      "budget_epochs": 1,
+      "status": "complete",
+      "artifact": "/home/dmsdmswns/doublemdp_outputs/dppo_original/bc_integration"
+    },
+    {
+      "phase": "online",
+      "budget_source_iterations": 3,
+      "ppo_iterations": 2,
+      "training_physical_interactions": 159452,
+      "evaluation_physical_interactions": 79787,
+      "status": "complete",
+      "artifact": "/home/dmsdmswns/doublemdp_outputs/dppo_original/ppo_integration_counted"
+    },
+    {
+      "phase": "held_out_evaluation",
+      "episodes_completed": 156,
+      "environment_steps": 79769,
+      "raw_return_mean": 1454.0601230017485,
+      "status": "complete",
+      "artifact": "/home/dmsdmswns/doublemdp_outputs/dppo_original/ppo_integration_evaluation"
+    },
+    {
+      "phase": "bc_full_budget",
+      "budget_epochs": 3000,
+      "status": "pending",
+      "estimated_seconds_from_one_epoch": 140585.1
+    },
+    {
+      "phase": "online_full_budget",
+      "budget_source_iterations": 1000,
+      "status": "pending",
+      "estimated_seconds_from_short_run": [
+        40000,
+        47000
+      ]
+    },
+    {
+      "phase": "bc_resume_integration",
+      "status": "complete",
+      "completed_epochs": 2,
+      "resumed_epoch": 2,
+      "artifacts": [
+        "/home/dmsdmswns/doublemdp_outputs/dppo_original/bc_full_resume_epoch1",
+        "/home/dmsdmswns/doublemdp_outputs/dppo_original/bc_full_resume_epoch2"
+      ],
+      "checkpoint_name": "checkpoint/full_bc_latest.pt",
+      "epoch2_loss": 0.201
+    }
+  ],
+  "source_checkpoint_support": {
+    "bc": "Exact exhausted-epoch resume using reviewed explicit patch in separate pinned source worktree",
+    "online": "Unsupported; launcher rejects --resume. Maintained port supports full online resume."
+  }
+}

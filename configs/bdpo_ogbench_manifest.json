@@ -1,0 +1,39 @@
+{
+  "method": "bdpo",
+  "profile": "ogbench_port",
+  "task_manifest": "rql_ogbench_manifest.json",
+  "fixed_transfer_config": "bdpo_ogbench_port.json",
+  "reward_scale": 1.0,
+  "native_eval_candidates": 10,
+  "single_candidate_probe_separate": true,
+  "training_budget": {
+    "pretrain": 2000000,
+    "rl": 2000000
+  },
+  "tuning": {
+    "max_trials": 4,
+    "development_tasks": [
+      "antmaze-large-navigate-singletask-task1-v0",
+      "scene-play-singletask-task2-v0"
+    ],
+    "development_seeds": [
+      0
+    ],
+    "trial_grid": {
+      "eta": [
+        0.05,
+        0.1
+      ]
+    },
+    "trial_updates": 50000,
+    "executed_trials": 0,
+    "selection_rule": "average final development success; no held-out task/seed feedback"
+  },
+  "final_seeds": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "status": "integration only; full port pending"
+}

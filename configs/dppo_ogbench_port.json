@@ -1,0 +1,27 @@
+{
+  "profile": "ogbench_port",
+  "device": "cuda:0",
+  "seed": 0,
+  "denoising_steps": 20,
+  "ft_denoising_steps": 10,
+  "actor_dims": [
+    512,
+    512,
+    512
+  ],
+  "critic_dims": [
+    256,
+    256,
+    256
+  ],
+  "bc_epochs": 100,
+  "bc_batch_size": 128,
+  "n_envs": 4,
+  "n_steps": 128,
+  "online_iterations": 1000,
+  "batch_size": 2560,
+  "update_epochs": 5,
+  "reward_scale_running": true,
+  "horizon_steps": 1,
+  "act_steps": 1
+}

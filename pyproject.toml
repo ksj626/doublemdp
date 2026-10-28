@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doublemdp"
+version = "0.1.0"
+description = "Auditable native diffusion/flow RL baselines and offline diagnostics"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<2", "matplotlib>=3.7", "gymnasium==0.29.1", "imageio>=2.31", "imageio-ffmpeg>=0.4"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+doublemdp-train = "doublemdp.train:main"
+doublemdp-evaluate = "doublemdp.evaluate:main"
+doublemdp-visualize = "doublemdp.visualize:main"
+doublemdp-sweep = "doublemdp.sweep:main"
+doublemdp-data = "doublemdp.toy:main"
+
+[tool.setuptools.packages.find]
+include = ["doublemdp*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

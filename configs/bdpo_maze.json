@@ -1,0 +1,83 @@
+{
+  "method": "bdpo",
+  "profile": "toy_diagnostic",
+  "strict_offline": true,
+  "env": "maze",
+  "seed": 0,
+  "steps": 11000,
+  "batch_size": 256,
+  "eval_interval": 1000,
+  "eval_episodes": 20,
+  "save_interval": 1000,
+  "log_interval": 100,
+  "agent": {
+    "profile": "toy_diagnostic",
+    "name": "bdpo",
+    "pretrain_steps": 1000,
+    "train_steps": 10000,
+    "batch_size": 256,
+    "eval_num_samples": 1,
+    "warmup_steps": 100,
+    "temperature": null,
+    "diffusion": {
+      "actor": {
+        "lr": 1e-05,
+        "lr_decay_steps": 10000,
+        "clip_grad_norm": 1.0,
+        "ema": 0.005,
+        "ema_every": 5
+      },
+      "behavior": {
+        "lr": 0.0003,
+        "lr_decay_steps": null,
+        "clip_grad_norm": 1.0,
+        "ema": 0.005,
+        "ema_every": 1
+      },
+      "noise_schedule": "vp",
+      "resnet": false,
+      "dropout": 0.0,
+      "layer_norm": false,
+      "time_dim": 32,
+      "mlp_hidden_dims": [
+        128,
+        128
+      ],
+      "resnet_hidden_dims": [
+        256,
+        256,
+        256
+      ],
+      "solver": "ddpm",
+      "steps": 10,
+      "clip_sampler": false,
+      "x_min": -4.0,
+      "x_max": 4.0
+    },
+    "critic": {
+      "discount": 0.99,
+      "q_target": "lcb",
+      "maxQ": false,
+      "ensemble_size": 3,
+      "rho": 0.0,
+      "eta": 0.06,
+      "hidden_dims": [
+        128,
+        128
+      ],
+      "lr": 0.0003,
+      "lr_decay_steps": 10000,
+      "clip_grad_norm": 1.0,
+      "layer_norm": false,
+      "ema": 0.005,
+      "ema_every": 1,
+      "steps": 10,
+      "num_samples": 2,
+      "solver": "ddpm",
+      "update_ratio": 5
+    }
+  },
+  "comparison": "toy_diagnostic_not_fidelity",
+  "dataset": "/home/dmsdmswns/doublemdp_outputs/datasets/maze.npz",
+  "output": "/home/dmsdmswns/doublemdp_outputs/runs/bdpo_maze_seed0"
+}

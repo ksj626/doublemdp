@@ -1,0 +1,24 @@
+{
+  "profile": "toy_diagnostic",
+  "device": "cuda:0",
+  "seed": 0,
+  "denoising_steps": 20,
+  "ft_denoising_steps": 10,
+  "actor_dims": [
+    128,
+    128,
+    128
+  ],
+  "critic_dims": [
+    128,
+    128,
+    128
+  ],
+  "bc_epochs": 100,
+  "n_envs": 4,
+  "n_steps": 64,
+  "online_iterations": 100,
+  "batch_size": 256,
+  "update_epochs": 5,
+  "reward_scale_running": false
+}

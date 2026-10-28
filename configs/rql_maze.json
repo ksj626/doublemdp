@@ -1,0 +1,42 @@
+{
+  "method": "rql",
+  "profile": "toy_diagnostic",
+  "strict_offline": true,
+  "env": "maze",
+  "seed": 0,
+  "steps": 10000,
+  "batch_size": 256,
+  "dataset": "/home/dmsdmswns/doublemdp_outputs/datasets/maze.npz",
+  "output": "/home/dmsdmswns/doublemdp_outputs/runs/rql_maze_transition_seed0",
+  "agent": {
+    "agent_name": "rql",
+    "h": 1,
+    "alpha": 1.0,
+    "expectile": 0.5,
+    "ensemble_ct": 3,
+    "rho": 0.0,
+    "lr": 0.0003,
+    "discount": 0.99,
+    "batch_size": 256,
+    "actor_hidden_dims": [
+      128,
+      128
+    ],
+    "value_hidden_dims": [
+      128,
+      128
+    ],
+    "layer_norm": true,
+    "actor_layer_norm": false,
+    "tau": 0.005,
+    "ema": 0.999,
+    "flow_steps": 10,
+    "q_agg": "mean"
+  },
+  "eval_interval": 1000,
+  "eval_episodes": 20,
+  "save_interval": 1000,
+  "log_interval": 100,
+  "comparison": "toy_diagnostic_not_fidelity",
+  "rql_sequence_adapter": "transition_h1"
+}

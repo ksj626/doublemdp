@@ -1,0 +1,30 @@
+--- a/agent/pretrain/train_diffusion_agent.py
++++ b/agent/pretrain/train_diffusion_agent.py
+@@ -10,18 +10,20 @@
+ log = logging.getLogger(__name__)
+ from util.timer import Timer
+ from agent.pretrain.train_agent import PreTrainAgent, batch_to_device
++from doublemdp.agents.dppo_original_bc import initialize_bc_checkpoint, restore_bc_epoch, save_bc_epoch
+ 
+ 
+ class TrainDiffusionAgent(PreTrainAgent):
+ 
+     def __init__(self, cfg):
+         super().__init__(cfg)
++        initialize_bc_checkpoint(self, cfg)
+ 
+     def run(self):
+ 
+         timer = Timer()
+-        self.epoch = 1
+-        for _ in range(self.n_epochs):
++        self.epoch = restore_bc_epoch(self)
++        for _ in range(self.epoch, self.n_epochs + 1):
+ 
+             # train
+             loss_train_epoch = []
+@@ -81,3 +83,4 @@
+ 
+             # count
+             self.epoch += 1
++            save_bc_epoch(self)
